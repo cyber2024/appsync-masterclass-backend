@@ -1,0 +1,24 @@
+{
+  "name": "appsync-masterclass-backend",
+  "version": "1.0.0",
+  "description": "Backend for asp-sync masterclass demo app",
+  "main": "index.js",
+  "scripts": {
+    "sls": "sls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyber2024/appsync-masterclass-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyber2024/appsync-masterclass-backend/issues"
+  },
+  "homepage": "https://github.com/cyber2024/appsync-masterclass-backend#readme",
+  "devDependencies": {
+    "serverless": "2.4.0",
+    "serverless-appsync-plugin": "^1.12.1"
+  }
+}
