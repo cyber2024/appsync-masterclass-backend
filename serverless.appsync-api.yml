@@ -13,6 +13,9 @@ mappingTemplates:
     # no need for these since we are using correct conventions - it is impleid
     # request: Query.getMyProfile.request.vtl
     # response: Query.getMyProfile.response.vtl
+  - type: Mutation
+    field: editMyProfile
+    dataSource: userTable
 
 dataSources:
   - type: NONE
