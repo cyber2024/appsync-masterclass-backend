@@ -9,18 +9,18 @@
         "expressionNames" : {
            "#name" : "name",
            "#location": "location"
-       },
-       "expressionValues" : {
-           ":name" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.name),
-           ":imageUrl" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.imageUrl),
-           ":backgroundImageUrl" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.backgroundImageUrl),
-           ":bio" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.bio),
-           ":location" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.location),
-           ":website" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.website),
-           ":birthdate" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.birthdate),
-       }
+        },
+        "expressionValues" : {
+            ":name" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.name),
+            ":imageUrl" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.imageUrl),
+            ":backgroundImageUrl" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.backgroundImageUrl),
+            ":bio" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.bio),
+            ":location" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.location),
+            ":website" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.website),
+            ":birthdate" : $util.dynamodb.toDynamoDBJson($context.arguments.newProfile.birthdate)
+        }
     },
     "condition" : {
         "expression" : "attribute_exists(id)"
-    },
+    }
 }
