@@ -4,7 +4,11 @@
   "description": "Backend for asp-sync masterclass demo app",
   "main": "index.js",
   "scripts": {
-    "sls": "sls"
+    "sls": "sls",
+    "exportEnv": "sls export-env --all --overwrite && sls manifest",
+    "integration-test": "jest --verbose ./__tests__/test_cases/integration",
+    "e2e-test": "jest --verbose ./__tests__/test_cases/e2e",
+    "test": "jest --verbose ./__tests__/test_cases/unit"
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,21 @@
   },
   "homepage": "https://github.com/cyber2024/appsync-masterclass-backend#readme",
   "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "amplify-appsync-simulator": "^2.3.1",
+    "amplify-velocity-template": "^1.4.5",
+    "aws-sdk": "^2.1043.0",
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "jest": "^27.4.3",
+    "lodash": "^4.17.21",
     "serverless": "2.4.0",
-    "serverless-appsync-plugin": "^1.12.1"
+    "serverless-appsync-plugin": "^1.12.1",
+    "serverless-export-env": "^1.4.0",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-manifest-plugin": "^1.0.9"
+  },
+  "dependencies": {
+    "chance": "^1.1.8"
   }
 }
