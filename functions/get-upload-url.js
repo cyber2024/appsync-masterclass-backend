@@ -6,7 +6,7 @@ const { BUCKET_NAME } = process.env;
 
 module.exports.handler = async (event) => {
     const id = ulid.ulid();
-    const key = `${event.identity.username}/${id}`;
+    let key = `${event.identity.username}/${id}`;
 
     const extension = event.arguments.extension
     if(extension){
@@ -20,6 +20,24 @@ module.exports.handler = async (event) => {
     if(!contentType.startsWith('image/')){
         throw new Error('content type must be an image.');
     }
+    // const params = {
+    //     Bucket: BUCKET_NAME,
+    //     Fields: {
+    //         key: key,
+    //     },
+    //     ACL: 'public-read',
+    //     ContentType: contentType
+    // }
+    // return new Promise( async (resolve, reject)=>{
+    //     s3.createPresignedPost(params, (err, data) => {
+    //         if (err) {
+    //             console.log('Presigning post data encountered error', err);
+    //             return reject('');
+    //         }
+    //         console.log('The post data is', data);
+    //         return resolve(data.url);
+    //     });
+    // });
     const params = {
         Bucket: BUCKET_NAME,
         Key: key,
@@ -27,7 +45,7 @@ module.exports.handler = async (event) => {
         ContentType: contentType
     }
 
-    const signedUrl = s3.createPresignedPost('putObject', params);
+    const signedUrl = s3.getSignedUrl('putObject', params);
 
     return signedUrl;
 }
