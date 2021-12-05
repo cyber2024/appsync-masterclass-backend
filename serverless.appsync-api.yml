@@ -13,6 +13,12 @@ mappingTemplates:
     # no need for these since we are using correct conventions - it is impleid
     # request: Query.getMyProfile.request.vtl
     # response: Query.getMyProfile.response.vtl
+  - type: Query
+    field: getImageUploadUrl
+    dataSource: getImageUploadUrlFunction
+    request: false
+    response: false
+
   - type: Mutation
     field: editMyProfile
     dataSource: userTable
@@ -24,3 +30,7 @@ dataSources:
     name: userTable
     config:
       tableName: !Ref UserTable
+  - type: AWS_LAMBDA
+    name: getImageUploadUrlFunction
+    config: 
+      functionName: getImageUploadUrl
