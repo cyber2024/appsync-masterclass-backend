@@ -5,8 +5,8 @@ schema {
 
 type Query {
     getImageUploadUrl(extension: String, contentType: String): AWSURL!
-
     getMyTimeline(limit: Int!, nextToken: String): TweetsPage!
+
 
     getMyProfile: MyProfile!
 
