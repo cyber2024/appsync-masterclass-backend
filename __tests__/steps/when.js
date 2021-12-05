@@ -46,6 +46,21 @@ const we_invoke_getImageUploadUrl = async (username, extension, contentType) => 
 
     return await handler(event, context);
 }
+const we_invoke_tweet = async (username, text) => {
+    const handler = require('../../functions/tweet').handler
+
+    const context = {}
+    const event = {
+        identity: {
+            username
+        },
+        arguments: {
+            text
+        }
+    }
+
+    return await handler(event, context);
+}
 
 
 const a_user_signs_up = async (name, email, password) => {
@@ -159,6 +174,28 @@ const a_user_calls_getMyProfile = async (user) => {
 
     return profile;
 }
+const a_user_calls_tweet = async (user, text) => {
+    const tweet = `mutation tweet($text: String!) {
+        tweet(text: $text){
+            id
+            createdAt
+            text
+            replies
+            likes
+            retweets
+        }
+      }`
+    const variables = {
+        text
+    }
+
+    const data = await GraphQL(process.env.API_URL, tweet, variables, user.accessToken);
+    const newTweet = data.tweet;
+
+    console.log(`[${user.username}] - tweeted`);
+
+    return newTweet;
+}
 
 module.exports = {
     we_invoke_confirmUserSignup,
@@ -167,5 +204,7 @@ module.exports = {
     a_user_calls_getMyProfile,
     a_user_calls_editMyProfile,
     we_invoke_getImageUploadUrl,
-    a_user_calls_getImageUploadUrl
+    a_user_calls_getImageUploadUrl,
+    we_invoke_tweet,
+    a_user_calls_tweet
 }

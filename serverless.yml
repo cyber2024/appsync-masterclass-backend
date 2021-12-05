@@ -56,9 +56,9 @@ functions:
     tweet:
       handler: functions/tweet.handler
       environment:
-        USER_TABLE_NAME: !Ref UserTable
-        TWEETS_TABLE_NAME: !Ref TweetsTable
-        TIMELINE_TABLE_NAME: !Ref TimelineTable
+        USER_TABLE: !Ref UserTable
+        TWEETS_TABLE: !Ref TweetsTable
+        TIMELINE_TABLE: !Ref TimelineTable
       iamRoleStatements:
         - Effect: Allow
           Action: dynamodb:UpdateItem
