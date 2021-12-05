@@ -139,7 +139,6 @@ const a_user_calls_getImageUploadUrl = async (user, extension, contentType) => {
         extension,
         contentType
     }
-    console.log({user})
     const data = await GraphQL(process.env.API_URL, getImageUploadUrl, variables, user.accessToken);
     const url = data.getImageUploadUrl;
 

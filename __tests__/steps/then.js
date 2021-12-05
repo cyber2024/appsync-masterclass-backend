@@ -67,7 +67,7 @@ const user_can_upload_image_to_url = async (url, filepath, contentType) => {
         },
         data
     })
-    console.log(`iamge uploaded to ${url}`);
+    console.log(`iamge uploaded to url`);
 }
 
 const user_can_download_image_from = async (url) => {
