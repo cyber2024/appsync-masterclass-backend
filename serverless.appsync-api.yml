@@ -18,6 +18,9 @@ mappingTemplates:
     dataSource: getImageUploadUrlFunction
     request: false
     response: false
+  - type: Query
+    field: getTweets
+    dataSource: tweetsTable
 
   - type: Mutation
     field: editMyProfile
@@ -27,6 +30,11 @@ mappingTemplates:
     dataSource: tweetFunction
     request: false
     response: false
+
+    # NESTED
+  - type: Tweet
+    field: profile
+    dataSource: userTable 
 
 dataSources:
   - type: NONE
@@ -43,3 +51,7 @@ dataSources:
     name: tweetFunction
     config:
       functionName: tweet
+  - type: AMAZON_DYNAMODB
+    name: tweetsTable
+    config:
+      tableName: !Ref TweetsTable

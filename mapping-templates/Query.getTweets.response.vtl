@@ -1,0 +1,5 @@
+
+{
+    "TweetsPage": $util.toJson($context.result.item),
+    "nextToken" = $util.toJson($util.defaultIfNullOrBlank($context.result.nextToken, null))
+}
