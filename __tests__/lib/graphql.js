@@ -2,9 +2,10 @@ const http = require('axios');
 const _ = require('lodash');
 
 const throwOnErrors = ({query, variables, errors}) => {
+    // console.log({query, variables, errors})
     if(errors){
         const errorMessage = `
-        query: ${query.substring(0,100)}
+        query: ${query}
         
         variables: ${JSON.stringify(variables, null, 2)}
         
@@ -16,6 +17,7 @@ const throwOnErrors = ({query, variables, errors}) => {
 
 module.exports = async (url, query, variables = {}, auth) => {
     const headers = {};
+    console.log({query, variables})
     if(auth){
         headers.Authorization = auth;
     }
@@ -30,6 +32,7 @@ module.exports = async (url, query, variables = {}, auth) => {
                 variables: JSON.stringify(variables)
             }
         })
+        
         const {data, errors} = response.data;
         throwOnErrors({query, variables, errors});
         return data;

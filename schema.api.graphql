@@ -66,7 +66,7 @@ interface IProfile {
 
 interface ITweet {
     id: ID!
-    profile: IProfile!
+    profile: IProfile
     createdAt: AWSDateTime!
 }
 type MyProfile implements IProfile {
@@ -138,7 +138,7 @@ type Retweet implements ITweet {
 
 }
 type TweetsPage {
-    tweets: [Tweet!]
+    tweets: [ITweet!]
     nextToken: String
 }
 
