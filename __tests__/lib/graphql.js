@@ -17,7 +17,7 @@ const throwOnErrors = ({query, variables, errors}) => {
 
 module.exports = async (url, query, variables = {}, auth) => {
     const headers = {};
-    console.log({query, variables})
+    // console.log({query, variables})
     if(auth){
         headers.Authorization = auth;
     }

@@ -21,6 +21,9 @@ mappingTemplates:
   - type: Query
     field: getTweets
     dataSource: tweetsTable
+  - type: Query
+    field: getMyTimeline
+    dataSource: timelineTable
 
   - type: Mutation
     field: editMyProfile
@@ -35,6 +38,9 @@ mappingTemplates:
   - type: Tweet
     field: profile
     dataSource: userTable 
+  - type: TimelinePage
+    field: tweets
+    dataSource: tweetsTable 
 
 dataSources:
   - type: NONE
@@ -55,3 +61,10 @@ dataSources:
     name: tweetsTable
     config:
       tableName: !Ref TweetsTable
+  - type: AMAZON_DYNAMODB
+    name: timelineTable
+    config:
+      tableName: !Ref TimelineTable
+
+substitutions:
+  TweetsTable: !Ref TweetsTable
